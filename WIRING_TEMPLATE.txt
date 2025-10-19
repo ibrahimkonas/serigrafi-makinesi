@@ -1,0 +1,52 @@
+# WIRING TEMPLATE (pin eşlemeleri ve yer tutucular)
+# Kaydet ve gerçek değerleri boşluklara gir
+
+# Arduino MEGA pin -> işlev
+D2  -> Ana piston yukari sensör
+D3  -> Ana piston asagi sensör
+D4  -> Ragle piston yukari sensör
+D5  -> Ragle piston asagi sensör
+D6  -> Step motor sag limit sensör
+D7  -> Step motor sol limit sensör
+D8  -> Pedal / Start buton (INPUT_PULLUP, GND'ye basinca aktif)
+
+# Valf röle kontrol (Arduino pin -> Röle IN)
+D22 -> Ana piston valf A (Röle IN)
+D23 -> Ana piston valf B
+D24 -> Ragle piston valf A
+D25 -> Ragle piston valf B
+# (Ek valfler için örnek: D29, D30, D31 ...)
+
+# Step driver
+D26 -> STEP
+D27 -> DIR
+D28 -> ENABLE (aktif LOW olabilir - sürücüye göre kontrol et)
+VMOT -> Harici 12V PSU (motor gücü)
+
+# 12864 LCD + Encoder
+D10 -> LCD CS
+D11 -> LCD MOSI (DIN)
+D13 -> LCD SCK
+GND -> LCD GND
+5V  -> LCD 5V
+
+Encoder:
+D31 -> Encoder CLK (A)
+D33 -> Encoder DT (B)
+D35 -> Encoder SW (Button)
+
+# Güç ve toprak
+- 12V PSU + ve - çıkışı -> Solenoidler ve motor VMOT (GND ortak olacak)
+- Arduino 5V -> Röle VCC (veya ayrı 5V regülatör)
+- Ortak GND: Arduino GND, 12V PSU GND, röle GND, step driver GND ortak bağlanmalı.
+
+# Yer tutucular (sonradan doldur)
+- Solenoid_1_coil_current_A = __ A
+- Solenoid_2_coil_current_A = __ A
+- Solenoid_3_coil_current_A = __ A
+- Röle_modul_tip = (optokuplör / normal) -> __
+- Röle_IN_active = (LOW / HIGH) -> __
+
+# Not:
+# - Opto-izole röle modüllerinde JD-VCC jumper olabilir; kullanım kılavuzuna göre bağlayın.
+# - Solenoid koruması için: 1N400x diyot (basit) veya TVS/RC snubber (hızlı) önerilir.

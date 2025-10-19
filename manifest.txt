@@ -1,0 +1,4 @@
+serigrafi_makinesi_12864_full_menu_test.ino
+README.md
+CHECKLIST.md
+WIRING_TEMPLATE.txt
